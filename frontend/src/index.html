@@ -1,0 +1,1699 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Red inteligente de monitoreo de flujo vehicular y contaminación acústica urbana mediante análisis de video y audio con IA."
+    />
+    <title>UrbanSense</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ========== NAVIGATION ========== -->
+    <header class="nav-header" id="nav-header">
+      <div class="container nav-container">
+        <a href="#" class="logo" id="logo-link">
+          <div class="logo-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="14"
+                cy="14"
+                r="13"
+                stroke="#E8903A"
+                stroke-width="2"
+              />
+              <circle
+                cx="14"
+                cy="14"
+                r="7"
+                fill="#E8903A"
+                fill-opacity="0.18"
+              />
+              <circle cx="14" cy="14" r="3" fill="#E8903A" />
+              <path
+                d="M14 4 L14 1"
+                stroke="#E8903A"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M14 27 L14 24"
+                stroke="#E8903A"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M4 14 L1 14"
+                stroke="#E8903A"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M27 14 L24 14"
+                stroke="#E8903A"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <span class="logo-text">UrbanSense</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="#proyecto" class="nav-link">Proyecto</a>
+          <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+          <a href="#pipeline" class="nav-link">Pipeline</a>
+          <a href="#tecnologias" class="nav-link">Tecnologías</a>
+          <a href="#analizar" class="nav-btn-nav">Analizar video</a>
+        </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content" data-animate="fade-up">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Percepción Computacional · IA en tiempo real
+          </div>
+          <h1 class="hero-title">
+            Inteligencia urbana que<br />
+            <span class="hero-accent">ve, escucha y analiza</span><br />
+            tu ciudad
+          </h1>
+          <p class="hero-desc">
+            Sistema de monitoreo inteligente que detecta y clasifica el flujo
+            vehicular mediante visión por computadora (YOLOv8) y analiza la
+            contaminación acústica con redes neuronales convolucionales, todo
+            desde un único punto de análisis.
+          </p>
+          <div class="hero-ctas">
+            <button
+              class="btn btn-primary"
+              id="btn-live-hero"
+              onclick="scrollToAnalysis('live')"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Conectar cámara en vivo
+            </button>
+            <button
+              class="btn btn-secondary"
+              id="btn-upload-hero"
+              onclick="scrollToAnalysis('upload')"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="16 16 12 12 8 16" />
+                <line x1="12" y1="12" x2="12" y2="21" />
+                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
+              </svg>
+              Subir video
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-value">YOLOv8n</span>
+              <span class="stat-label">Detección vehicular</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">CNN</span>
+              <span class="stat-label">Clasificación acústica</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">≤ 2s</span>
+              <span class="stat-label">Tiempo de respuesta</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" data-animate="fade-left">
+          <div class="hero-illustration">
+            <!-- City grid visualization -->
+            <div class="city-visual">
+              <div class="city-map">
+                <div class="road road-h road-h1"></div>
+                <div class="road road-h road-h2"></div>
+                <div class="road road-v road-v1"></div>
+                <div class="road road-v road-v2"></div>
+                <div class="vehicle v1" style="--delay: 0s"></div>
+                <div class="vehicle v2" style="--delay: 0.8s"></div>
+                <div class="vehicle v3" style="--delay: 1.6s"></div>
+                <div class="vehicle v4" style="--delay: 2.4s"></div>
+                <div class="building b1"></div>
+                <div class="building b2"></div>
+                <div class="building b3"></div>
+                <div class="building b4"></div>
+                <div class="detection-box db1"></div>
+                <div class="detection-box db2"></div>
+                <div class="sound-wave sw1">
+                  <div class="wave-ring" style="--i: 1"></div>
+                  <div class="wave-ring" style="--i: 2"></div>
+                  <div class="wave-ring" style="--i: 3"></div>
+                </div>
+              </div>
+              <div class="visual-overlay-card vc1">
+                <span class="vc-dot"></span>
+                <span class="vc-text">Car detectado · 94.2%</span>
+              </div>
+              <div class="visual-overlay-card vc2">
+                <span class="vc-dot sound"></span>
+                <span class="vc-text">Ruido motor · 71 dB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <div class="scroll-dot"></div>
+        <span>Explorar</span>
+      </div>
+    </section>
+
+    <!-- ========== ANÁLISIS SECTION ========== -->
+    <section class="analysis-section" id="analizar">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Análisis</span>
+          <h2 class="section-title">Selecciona tu método de análisis</h2>
+          <p class="section-desc">
+            Conecta una cámara USB en tiempo real o sube un archivo de video
+            para procesarlo con nuestros modelos de IA.
+          </p>
+        </div>
+
+        <div class="analysis-tabs" data-animate="fade-up">
+          <button
+            class="tab-btn active"
+            id="tab-live"
+            onclick="switchTab('live')"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            Cámara en vivo
+          </button>
+          <button class="tab-btn" id="tab-upload" onclick="switchTab('upload')">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 16 12 12 8 16" />
+              <line x1="12" y1="12" x2="12" y2="21" />
+              <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
+            </svg>
+            Subir video
+          </button>
+        </div>
+
+        <!-- LIVE CAMERA PANEL -->
+        <div class="analysis-panel" id="panel-live" data-animate="fade-up">
+          <div class="panel-inner">
+            <div class="panel-left">
+              <div class="camera-preview" id="camera-preview">
+                <div class="camera-idle" id="camera-idle">
+                  <div class="camera-icon-wrap">
+                    <svg
+                      width="48"
+                      height="48"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#C8A97E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M23 7l-7 5 7 5V7z" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </div>
+                  <p class="camera-idle-text">Vista previa de la cámara</p>
+                  <p class="camera-idle-sub">
+                    Detecta tu cámara USB para iniciar
+                  </p>
+                </div>
+                <video
+                  id="live-video"
+                  class="live-video hidden"
+                  autoplay
+                  muted
+                  playsinline
+                ></video>
+                <canvas id="live-canvas" class="live-canvas hidden"></canvas>
+                <div class="live-badge hidden" id="live-badge">
+                  <span class="live-dot"></span> EN VIVO
+                </div>
+              </div>
+            </div>
+            <div class="panel-right">
+              <h3 class="panel-title">Monitoreo en tiempo real</h3>
+              <p class="panel-desc">
+                Conecta tu dispositivo (celular o cámara) mediante USB y activa
+                la cámara para iniciar el análisis de flujo vehicular y
+                contaminación acústica en tiempo real.
+              </p>
+
+              <div class="camera-info-box" id="camera-info-box">
+                <div class="info-row">
+                  <span class="info-label">Estado</span>
+                  <span class="info-value" id="cam-status"
+                    >Sin cámara detectada</span
+                  >
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Dispositivo</span>
+                  <span class="info-value" id="cam-device">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Resolución</span>
+                  <span class="info-value" id="cam-resolution">—</span>
+                </div>
+              </div>
+
+              <div class="camera-steps">
+                <div class="step-item">
+                  <div class="step-num">1</div>
+                  <div class="step-text">
+                    <strong>Conecta tu cámara</strong>
+                    <span
+                      >Usa un cable USB o activa el modo cámara web en tu
+                      celular.</span
+                    >
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">2</div>
+                  <div class="step-text">
+                    <strong>Detectar dispositivo</strong>
+                    <span
+                      >Haz clic en "Buscar cámara" para que el sistema la
+                      identifique.</span
+                    >
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">3</div>
+                  <div class="step-text">
+                    <strong>Inicia el monitoreo</strong>
+                    <span
+                      >El sistema procesará el video en tiempo real mediante
+                      IA.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-actions">
+                <button
+                  class="btn btn-outline"
+                  id="btn-detect-camera"
+                  onclick="detectCamera()"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  Buscar cámara
+                </button>
+                <button
+                  class="btn btn-primary"
+                  id="btn-start-live"
+                  onclick="startLiveMonitoring()"
+                  disabled
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  Iniciar monitoreo en vivo
+                </button>
+              </div>
+              <div class="live-status-msg" id="live-status-msg"></div>
+            </div>
+          </div>
+
+          <!-- Live results area -->
+          <div class="live-results hidden" id="live-results">
+            <div class="results-grid">
+              <div class="result-card" id="rc-vehicles">
+                <div class="rc-icon">🚗</div>
+                <div class="rc-value" id="rc-count">0</div>
+                <div class="rc-label">Vehículos detectados</div>
+              </div>
+              <div class="result-card" id="rc-frames">
+                <div class="rc-icon">🎞️</div>
+                <div class="rc-value" id="rc-frames-val">0</div>
+                <div class="rc-label">Fotogramas procesados</div>
+              </div>
+              <div class="result-card" id="rc-noise">
+                <div class="rc-icon">🔊</div>
+                <div class="rc-value" id="rc-noise-val">—</div>
+                <div class="rc-label">Nivel de ruido</div>
+              </div>
+              <div class="result-card" id="rc-fps">
+                <div class="rc-icon">⚡</div>
+                <div class="rc-value" id="rc-fps-val">—</div>
+                <div class="rc-label">FPS procesados</div>
+              </div>
+            </div>
+            <button
+              class="btn btn-danger"
+              id="btn-stop-live"
+              onclick="stopLiveMonitoring()"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+              </svg>
+              Detener monitoreo
+            </button>
+          </div>
+        </div>
+
+        <!-- UPLOAD VIDEO PANEL -->
+        <div
+          class="analysis-panel hidden"
+          id="panel-upload"
+          data-animate="fade-up"
+        >
+          <div class="panel-inner">
+            <div class="panel-left">
+              <div
+                class="upload-zone"
+                id="upload-zone"
+                onclick="document.getElementById('video-input').click()"
+                ondragover="handleDragOver(event)"
+                ondrop="handleDrop(event)"
+              >
+                <input
+                  type="file"
+                  id="video-input"
+                  accept="video/*"
+                  class="hidden"
+                  onchange="handleFileSelect(event)"
+                />
+                <div class="upload-idle" id="upload-idle">
+                  <div class="upload-icon-wrap">
+                    <svg
+                      width="52"
+                      height="52"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#C8A97E"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="16 16 12 12 8 16" />
+                      <line x1="12" y1="12" x2="12" y2="21" />
+                      <path
+                        d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"
+                      />
+                    </svg>
+                  </div>
+                  <p class="upload-title">Arrastra tu video aquí</p>
+                  <p class="upload-sub">o haz clic para seleccionar</p>
+                  <div class="upload-formats">MP4 · AVI · MOV · MKV</div>
+                </div>
+                <div class="upload-preview hidden" id="upload-preview">
+                  <video
+                    id="preview-video"
+                    class="preview-video"
+                    controls
+                  ></video>
+                </div>
+              </div>
+            </div>
+            <div class="panel-right">
+              <h3 class="panel-title">Análisis de video</h3>
+              <p class="panel-desc">
+                Sube un archivo de video capturado con cámara fija o dron. El
+                sistema extrae fotogramas (1 fps), los procesa con YOLOv8n y
+                genera un reporte completo de detecciones vehiculares y nivel
+                acústico.
+              </p>
+
+              <div class="file-info-box hidden" id="file-info-box">
+                <div class="info-row">
+                  <span class="info-label">Archivo</span>
+                  <span class="info-value file-name" id="file-name">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Tamaño</span>
+                  <span class="info-value" id="file-size">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Duración</span>
+                  <span class="info-value" id="file-duration">—</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Formato</span>
+                  <span class="info-value" id="file-format">—</span>
+                </div>
+              </div>
+
+              <div class="upload-steps" id="upload-steps-default">
+                <div class="step-item">
+                  <div class="step-num">1</div>
+                  <div class="step-text">
+                    <strong>Selecciona el video</strong>
+                    <span
+                      >Arrastra o usa el explorador para cargar el
+                      archivo.</span
+                    >
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">2</div>
+                  <div class="step-text">
+                    <strong>Verifica la vista previa</strong>
+                    <span
+                      >Confirma que el video sea correcto antes de
+                      procesar.</span
+                    >
+                  </div>
+                </div>
+                <div class="step-item">
+                  <div class="step-num">3</div>
+                  <div class="step-text">
+                    <strong>Procesa y obtén resultados</strong>
+                    <span
+                      >El sistema generará detecciones y estadísticas
+                      automáticamente.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-actions">
+                <button
+                  class="btn btn-outline"
+                  id="btn-clear-video"
+                  onclick="clearVideo()"
+                  style="display: none"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                  </svg>
+                  Quitar video
+                </button>
+                <button
+                  class="btn btn-primary"
+                  id="btn-process-video"
+                  onclick="processVideo()"
+                  disabled
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  Procesar video
+                </button>
+              </div>
+              <div class="upload-status-msg" id="upload-status-msg"></div>
+            </div>
+          </div>
+
+          <!-- Processing state -->
+          <div class="processing-overlay hidden" id="processing-overlay">
+            <div class="processing-content">
+              <div class="processing-spinner"></div>
+              <h4 class="processing-title">Procesando video con IA</h4>
+              <p class="processing-desc" id="processing-desc">
+                Extrayendo fotogramas del video...
+              </p>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" id="progress-bar"></div>
+              </div>
+              <span class="progress-pct" id="progress-pct">0%</span>
+              <div class="processing-steps-track">
+                <div class="pt-step active" id="pt-1">Extracción</div>
+                <div class="pt-arrow">→</div>
+                <div class="pt-step" id="pt-2">YOLOv8</div>
+                <div class="pt-arrow">→</div>
+                <div class="pt-step" id="pt-3">Acústico</div>
+                <div class="pt-arrow">→</div>
+                <div class="pt-step" id="pt-4">Reporte</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video results -->
+          <div class="video-results hidden" id="video-results">
+            <div class="results-header">
+              <h4>Resultados del análisis</h4>
+              <div class="results-meta" id="results-meta"></div>
+            </div>
+            <div class="results-grid" id="video-results-grid">
+              <div class="result-card">
+                <div class="rc-icon">🚗</div>
+                <div class="rc-value" id="res-total">—</div>
+                <div class="rc-label">Total vehículos</div>
+              </div>
+              <div class="result-card">
+                <div class="rc-icon">🎞️</div>
+                <div class="rc-value" id="res-frames">—</div>
+                <div class="rc-label">Fotogramas analizados</div>
+              </div>
+              <div class="result-card">
+                <div class="rc-icon">⏱️</div>
+                <div class="rc-value" id="res-time">—</div>
+                <div class="rc-label">Tiempo proceso</div>
+              </div>
+              <div class="result-card">
+                <div class="rc-icon">🔊</div>
+                <div class="rc-value" id="res-audio">—</div>
+                <div class="rc-label">Clase acústica</div>
+              </div>
+            </div>
+
+            <div class="vehicle-breakdown" id="vehicle-breakdown">
+              <h5>Desglose por tipo de vehículo</h5>
+              <div class="breakdown-bars" id="breakdown-bars"></div>
+            </div>
+
+            <div class="results-actions">
+              <button class="btn btn-outline" onclick="clearVideo()">
+                Analizar otro video
+              </button>
+              <button
+                class="btn btn-primary"
+                id="btn-download"
+                onclick="downloadReport()"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Descargar reporte
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROYECTO ========== -->
+    <section class="project-section" id="proyecto">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">El proyecto</span>
+          <h2 class="section-title">¿Qué es UrbanSense?</h2>
+        </div>
+        <div class="project-grid">
+          <div class="project-main" data-animate="fade-up">
+            <div class="project-main-inner">
+              <h3>
+                Red inteligente de monitoreo de flujo vehicular y contaminación
+                acústica urbana
+              </h3>
+              <p>
+                En las ciudades modernas, el aumento del tráfico vehicular
+                genera congestión y niveles de ruido que afectan directamente la
+                calidad de vida. Sin embargo, el monitoreo de estos fenómenos se
+                realiza aún de forma manual o con sistemas poco integrados,
+                limitando la obtención de información precisa y oportuna.
+              </p>
+              <p>
+                UrbanSense es un sistema de percepción computacional que integra
+                análisis de video y audio para automatizar el monitoreo urbano.
+                Utiliza modelos de Deep Learning entrenados con datos reales
+                incluyendo capturas propias en Trujillo, Perú, para detectar
+                vehículos, clasificarlos por tipo y medir la contaminación
+                acústica del entorno en tiempo casi real.
+              </p>
+              <div class="project-hypothesis">
+                <blockquote>
+                  "El uso de redes neuronales convolucionales para el análisis
+                  de video y técnicas de procesamiento de audio permitirá
+                  mejorar la precisión del monitoreo urbano en al menos un 20%
+                  en comparación con métodos tradicionales, obteniendo
+                  resultados en tiempo casi real."
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          <div class="project-cards" data-animate="fade-up">
+            <div class="pcard pcard-problem">
+              <div class="pcard-icon">⚠️</div>
+              <h4>El problema</h4>
+              <p>
+                Monitoreo manual, datos incompletos, sin continuidad. Las
+                ciudades no cuentan con información automatizada del tráfico ni
+                del ruido urbano.
+              </p>
+            </div>
+            <div class="pcard pcard-solution">
+              <div class="pcard-icon">💡</div>
+              <h4>La solución</h4>
+              <p>
+                Red inteligente que procesa video (cámaras/drones) y audio de
+                forma simultánea, generando estadísticas en tiempo casi real
+                para la gestión urbana.
+              </p>
+            </div>
+            <div class="pcard pcard-impact">
+              <div class="pcard-icon">🏙️</div>
+              <h4>El impacto</h4>
+              <p>
+                Información precisa para la toma de decisiones en gestión de
+                tráfico, planificación vial y control de la contaminación
+                acústica urbana.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="objectives-strip" data-animate="fade-up">
+          <div class="obj-item">
+            <div class="obj-num">+90%</div>
+            <div class="obj-text">
+              Precisión objetivo en detección y conteo vehicular
+            </div>
+          </div>
+          <div class="obj-divider"></div>
+          <div class="obj-item">
+            <div class="obj-num">&lt; 2s</div>
+            <div class="obj-text">
+              Tiempo de respuesta del sistema en procesamiento
+            </div>
+          </div>
+          <div class="obj-divider"></div>
+          <div class="obj-item">
+            <div class="obj-num">5</div>
+            <div class="obj-text">
+              Clases de vehículos detectadas: car, bus, truck, van, motor
+            </div>
+          </div>
+          <div class="obj-divider"></div>
+          <div class="obj-item">
+            <div class="obj-num">10</div>
+            <div class="obj-text">
+              Categorías de sonido urbano clasificadas por la CNN
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CÓMO FUNCIONA ========== -->
+    <section class="how-section" id="como-funciona">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Funcionamiento</span>
+          <h2 class="section-title">Dos sistemas de percepción integrados</h2>
+          <p class="section-desc">
+            El sistema combina visión por computadora y procesamiento de audio
+            en una arquitectura de streaming continuo.
+          </p>
+        </div>
+        <div class="how-grid">
+          <!-- Video System -->
+          <div class="how-card" data-animate="fade-up">
+            <div class="how-card-header">
+              <div class="how-icon video-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="2.18"
+                    ry="2.18"
+                  />
+                  <line x1="7" y1="2" x2="7" y2="22" />
+                  <line x1="17" y1="2" x2="17" y2="22" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <line x1="2" y1="7" x2="7" y2="7" />
+                  <line x1="2" y1="17" x2="7" y2="17" />
+                  <line x1="17" y1="17" x2="22" y2="17" />
+                  <line x1="17" y1="7" x2="22" y2="7" />
+                </svg>
+              </div>
+              <div>
+                <h3>Sistema Visual · YOLOv8n</h3>
+                <p class="how-subtitle">Dataset VisDrone-DET</p>
+              </div>
+            </div>
+            <p class="how-desc">
+              Los videos son procesados a 1 fotograma por segundo. Cada frame se
+              redimensiona a 640×640 px, se normaliza y es analizado por YOLOv8n
+              , una arquitectura YOLO versión 8 nano entrenada con 6,471
+              imágenes aéreas de tráfico urbano.
+            </p>
+            <div class="how-details">
+              <div class="detail-pill">Backbone: CSPDarknet</div>
+              <div class="detail-pill">Neck: PANet</div>
+              <div class="detail-pill">Head: Decoupled + NMS</div>
+              <div class="detail-pill">35 épocas · mAP50: 28.5%</div>
+              <div class="detail-pill">3.15M parámetros</div>
+            </div>
+            <div class="how-classes">
+              <span class="class-tag car">Car</span>
+              <span class="class-tag bus">Bus</span>
+              <span class="class-tag truck">Truck</span>
+              <span class="class-tag van">Van</span>
+              <span class="class-tag motor">Motor</span>
+            </div>
+          </div>
+
+          <!-- Audio System -->
+          <div class="how-card" data-animate="fade-up">
+            <div class="how-card-header">
+              <div class="how-icon audio-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                  <path
+                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3>Sistema Acústico · CNN</h3>
+                <p class="how-subtitle">Dataset UrbanSound8K</p>
+              </div>
+            </div>
+            <p class="how-desc">
+              El audio se re-muestrea a 22,050 Hz y se divide en clips de 4
+              segundos. Cada clip se convierte en un espectrograma Mel de 128
+              bandas en escala logarítmica, tratándolo como una imagen que la
+              CNN clasifica en 10 categorías de sonido urbano.
+            </p>
+            <div class="how-details">
+              <div class="detail-pill">3 bloques Conv2D</div>
+              <div class="detail-pill">BatchNorm + ReLU</div>
+              <div class="detail-pill">MaxPooling 2D</div>
+              <div class="detail-pill">50 épocas · 71.32% acc.</div>
+              <div class="detail-pill">11.1M parámetros</div>
+            </div>
+            <div class="how-classes">
+              <span class="class-tag car">Car horn</span>
+              <span class="class-tag bus">Engine idle</span>
+              <span class="class-tag truck">Jackhammer</span>
+              <span class="class-tag van">Street music</span>
+              <span class="class-tag motor">+6 más</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Training data -->
+        <div class="datasets-strip" data-animate="fade-up">
+          <div class="dataset-item">
+            <div class="dataset-badge video-badge">VIDEO</div>
+            <div class="dataset-info">
+              <strong>VisDrone-DET 2019</strong>
+              <span>10,209 imágenes · AISKYEYE Lab, Tianjin</span>
+            </div>
+          </div>
+          <div class="dataset-sep">+</div>
+          <div class="dataset-item">
+            <div class="dataset-badge audio-badge">AUDIO</div>
+            <div class="dataset-info">
+              <strong>UrbanSound8K</strong>
+              <span>8,732 clips · NYU · 10 folds de validación cruzada</span>
+            </div>
+          </div>
+          <div class="dataset-sep">+</div>
+          <div class="dataset-item">
+            <div class="dataset-badge local-badge">LOCAL</div>
+            <div class="dataset-info">
+              <strong>Capturas propias · Trujillo, Perú</strong>
+              <span>Av. España, Óvalo Grau, Av. Fátima</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PIPELINE / TIMELINE ========== -->
+    <section class="pipeline-section" id="pipeline">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Pipeline</span>
+          <h2 class="section-title">Flujo completo del sistema</h2>
+          <p class="section-desc">
+            Desde la captura del video hasta la generación del reporte, cada
+            paso es automatizado por la arquitectura de streaming.
+          </p>
+        </div>
+
+        <div class="pipeline-track" data-animate="fade-up">
+          <div class="pipeline-step ps-1">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              </svg>
+            </div>
+            <div class="ps-num">01</div>
+            <h4>Captura de video</h4>
+            <p>
+              Cámara fija o dron a 1920×1080. Audio WAV a 22,050 Hz. Publicado
+              al broker mediante <code>productor.py</code>.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-2">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div class="ps-num">02</div>
+            <h4>Preprocesamiento</h4>
+            <p>
+              Video: 1 frame/seg → 640×640 px → normalización → data
+              augmentation.<br />Audio: 22,050 Hz → 4s → espectrograma Mel 128
+              bandas.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-3">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <div class="ps-num">03</div>
+            <h4>Apache Kafka</h4>
+            <p>
+              Mensajería asíncrona. Topics: <code>detecciones-trafico</code> y
+              <code>audio-stream</code>. Coordinado por Zookeeper en Docker.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-4">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
+              </svg>
+            </div>
+            <div class="ps-num">04</div>
+            <h4>Inferencia IA</h4>
+            <p>
+              YOLOv8n ejecuta inferencia frame a frame con frame skipping (1 de
+              cada 5). CNN clasifica espectrogramas Mel en tiempo real.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-5">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <div class="ps-num">05</div>
+            <h4>Apache Spark</h4>
+            <p>
+              Structured Streaming consume los resultados de Kafka.
+              <code>groupBy("clase").count()</code> mantiene contadores en
+              tiempo real.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-6">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <div class="ps-num">06</div>
+            <h4>Generación de resultados</h4>
+            <p>
+              Video anotado <code>trafico_detecciones.mp4</code> con bounding
+              boxes. Reporte <code>reporte_pipeline.txt</code> con estadísticas
+              por clase.
+            </p>
+          </div>
+          <div class="pipeline-arrow">↓</div>
+
+          <div class="pipeline-step ps-7">
+            <div class="ps-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <path d="M3 9h18M9 21V9" />
+              </svg>
+            </div>
+            <div class="ps-num">07</div>
+            <h4>Visualización</h4>
+            <p>
+              Estadísticas en consola actualizadas cada 20 frames. Dashboard con
+              conteo vehicular por clase, nivel acústico y gráficas de progreso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESULTADOS PREVIEW ========== -->
+    <section class="metrics-section" id="metricas">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Métricas del modelo</span>
+          <h2 class="section-title">Rendimiento en datos reales</h2>
+          <p class="section-desc">
+            Resultados obtenidos tras el entrenamiento en Google Colab con GPU
+            Tesla T4.
+          </p>
+        </div>
+
+        <div class="metrics-grid" data-animate="fade-up">
+          <div class="metric-card mc-video">
+            <div class="mc-header">
+              <span class="mc-tag">Video · YOLOv8n</span>
+              <span class="mc-gpu">Tesla T4</span>
+            </div>
+            <div class="mc-main-metric">
+              <span class="mc-big">28.5%</span>
+              <span class="mc-unit">mAP50</span>
+            </div>
+            <div class="mc-secondary">
+              <span>mAP50-95: <strong>15.9%</strong></span>
+              <span>35 épocas · 1.589 h entrenamiento</span>
+            </div>
+            <div class="mc-classes-grid">
+              <div class="mc-cls"><span>Car</span></div>
+              <div class="mc-cls"><span>Bus</span></div>
+              <div class="mc-cls"><span>Truck</span></div>
+              <div class="mc-cls"><span>Van</span></div>
+              <div class="mc-cls"><span>Motor</span></div>
+            </div>
+            <p class="mc-note">
+              Dataset VisDrone-DET: imágenes aéreas de alta densidad con
+              vehículos de tamaño reducido, una de las tareas más exigentes en
+              detección de objetos.
+            </p>
+          </div>
+
+          <div class="metric-card mc-audio">
+            <div class="mc-header">
+              <span class="mc-tag">Audio · CNN PyTorch</span>
+              <span class="mc-gpu">Tesla T4</span>
+            </div>
+            <div class="mc-main-metric">
+              <span class="mc-big">71.32%</span>
+              <span class="mc-unit">Accuracy</span>
+            </div>
+            <div class="mc-secondary">
+              <span>vs. baseline SVM: <strong>53.75%</strong></span>
+              <span>50 épocas · Loss: 2.8 → 0.9</span>
+            </div>
+            <div class="mc-progress-bars">
+              <div class="mc-pb-row">
+                <span>CNN (nuestro modelo)</span>
+                <div class="mc-pb-wrap">
+                  <div class="mc-pb" style="width: 71.32%"></div>
+                </div>
+                <span>71.3%</span>
+              </div>
+              <div class="mc-pb-row">
+                <span>MFCC + SVM (baseline)</span>
+                <div class="mc-pb-wrap">
+                  <div class="mc-pb mc-pb-base" style="width: 53.75%"></div>
+                </div>
+                <span>53.8%</span>
+              </div>
+            </div>
+            <p class="mc-note">
+              La CNN superó al clasificador clásico SVM en +17.5 puntos
+              porcentuales, demostrando la eficacia del aprendizaje profundo
+              para la clasificación acústica urbana.
+            </p>
+          </div>
+
+          <div class="metric-card mc-system">
+            <div class="mc-header">
+              <span class="mc-tag">Sistema · Arquitectura</span>
+              <span class="mc-gpu">Streaming</span>
+            </div>
+            <div class="mc-features">
+              <div class="mc-feat">
+                <div class="mc-feat-icon">🔄</div>
+                <div>
+                  <strong>Tiempo casi real</strong>
+                  <span>Procesamiento continuo con Kafka + Spark</span>
+                </div>
+              </div>
+              <div class="mc-feat">
+                <div class="mc-feat-icon">📊</div>
+                <div>
+                  <strong>Estadísticas cada 20 frames</strong>
+                  <span>Actualización continua del conteo por clase</span>
+                </div>
+              </div>
+              <div class="mc-feat">
+                <div class="mc-feat-icon">🎯</div>
+                <div>
+                  <strong>Frame Skipping 1:5</strong>
+                  <span
+                    >Optimización computacional sin pérdida de cobertura</span
+                  >
+                </div>
+              </div>
+              <div class="mc-feat">
+                <div class="mc-feat-icon">📄</div>
+                <div>
+                  <strong>Reporte automático</strong>
+                  <span>Video anotado + reporte_pipeline.txt</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TECNOLOGÍAS ========== -->
+    <section class="tech-section" id="tecnologias">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Stack tecnológico</span>
+          <h2 class="section-title">Tecnologías utilizadas</h2>
+          <p class="section-desc">
+            Cada componente del stack fue elegido específicamente para las
+            necesidades de percepción computacional y procesamiento en tiempo
+            real.
+          </p>
+        </div>
+
+        <div class="tech-grid" data-animate="fade-up">
+          <div class="tech-card" data-cat="vision">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <path
+                  d="M8 16c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8-8-3.582-8-8z"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <circle cx="16" cy="16" r="3" fill="#E8903A" />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>Python</h4>
+              <p>Lenguaje principal del sistema</p>
+            </div>
+            <div class="tech-cat">Core</div>
+          </div>
+
+          <div class="tech-card" data-cat="vision">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <rect
+                  x="7"
+                  y="10"
+                  width="18"
+                  height="12"
+                  rx="2"
+                  fill="#E8903A"
+                  fill-opacity="0.2"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>OpenCV</h4>
+              <p>Extracción y procesamiento de frames</p>
+            </div>
+            <div class="tech-cat">Visión</div>
+          </div>
+
+          <div class="tech-card" data-cat="ai">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <polygon
+                  points="16,8 24,20 8,20"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+                <circle cx="16" cy="20" r="2" fill="#E8903A" />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>YOLOv8n</h4>
+              <p>Detección y clasificación vehicular</p>
+            </div>
+            <div class="tech-cat">IA</div>
+          </div>
+
+          <div class="tech-card" data-cat="ai">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <path
+                  d="M8 16h3l3-6 3 12 3-8 3 4"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>PyTorch</h4>
+              <p>Entrenamiento de la CNN de audio</p>
+            </div>
+            <div class="tech-cat">Deep Learning</div>
+          </div>
+
+          <div class="tech-card" data-cat="audio">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <path
+                  d="M11 22V10l14 6-14 6z"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>librosa</h4>
+              <p>Procesamiento de audio y espectrogramas Mel</p>
+            </div>
+            <div class="tech-cat">Audio</div>
+          </div>
+
+          <div class="tech-card" data-cat="streaming">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <rect
+                  x="8"
+                  y="14"
+                  width="16"
+                  height="4"
+                  rx="2"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M12 14V10M20 14V10M12 18v4M20 18v4"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>Apache Kafka</h4>
+              <p>Mensajería y streaming de datos en tiempo real</p>
+            </div>
+            <div class="tech-cat">Streaming</div>
+          </div>
+
+          <div class="tech-card" data-cat="streaming">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <path
+                  d="M8 20l4-8 4 6 4-4 4 6"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>Apache Spark</h4>
+              <p>Procesamiento distribuido y Structured Streaming</p>
+            </div>
+            <div class="tech-cat">Big Data</div>
+          </div>
+
+          <div class="tech-card" data-cat="infra">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <rect
+                  x="8"
+                  y="9"
+                  width="16"
+                  height="14"
+                  rx="2"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="12"
+                  y1="13"
+                  x2="20"
+                  y2="13"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="12"
+                  y1="17"
+                  x2="17"
+                  y2="17"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>Docker</h4>
+              <p>Orquestación de Kafka y Zookeeper</p>
+            </div>
+            <div class="tech-cat">Infraestructura</div>
+          </div>
+
+          <div class="tech-card" data-cat="ml">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="20"
+                  cy="20"
+                  r="3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <line
+                  x1="14.5"
+                  y1="14.5"
+                  x2="17.5"
+                  y2="17.5"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>scikit-learn</h4>
+              <p>Modelos baseline: SVM + HOG + MFCC</p>
+            </div>
+            <div class="tech-cat">ML Clásico</div>
+          </div>
+
+          <div class="tech-card" data-cat="vision">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <rect
+                  x="8"
+                  y="12"
+                  width="7"
+                  height="8"
+                  rx="1"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="17"
+                  y="9"
+                  width="7"
+                  height="11"
+                  rx="1"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>torchvision</h4>
+              <p>Augmentation y normalización de imágenes</p>
+            </div>
+            <div class="tech-cat">Visión</div>
+          </div>
+
+          <div class="tech-card" data-cat="data">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FEF3E2" />
+                <ellipse
+                  cx="16"
+                  cy="12"
+                  rx="8"
+                  ry="3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M8 16c0 1.657 3.582 3 8 3s8-1.343 8-3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M8 20c0 1.657 3.582 3 8 3s8-1.343 8-3"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>NumPy · Pandas</h4>
+              <p>Manipulación de datos y metadatos</p>
+            </div>
+            <div class="tech-cat">Datos</div>
+          </div>
+
+          <div class="tech-card" data-cat="env">
+            <div class="tech-logo">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#FFF8F0" />
+                <circle
+                  cx="16"
+                  cy="16"
+                  r="7"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M16 9v7l4 2"
+                  stroke="#E8903A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="tech-info">
+              <h4>Google Colab</h4>
+              <p>Entrenamiento con GPU Tesla T4</p>
+            </div>
+            <div class="tech-cat">Entorno</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EQUIPO ========== -->
+    <section class="team-section" id="equipo">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Autores</span>
+          <h2 class="section-title">Equipo investigador</h2>
+          <p class="section-desc">
+            Universidad — Percepción Computacional · 2026
+          </p>
+        </div>
+        <div class="team-grid" data-animate="fade-up">
+          <div class="team-card">
+            <div class="team-avatar">AP</div>
+            <div class="team-name">Alonzo Pérez</div>
+            <div class="team-role">Cristhian</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">IR</div>
+            <div class="team-name">Infantes Rondo</div>
+            <div class="team-role">Junior</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">SB</div>
+            <div class="team-name">Solar Beltrán</div>
+            <div class="team-role">Joan</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">YA</div>
+            <div class="team-name">Yon Alva</div>
+            <div class="team-role">Carlos</div>
+          </div>
+        </div>
+        <div class="team-advisor" data-animate="fade-up">
+          <span class="advisor-label">Docente:</span>
+          <span class="advisor-name"
+            >Mg. Caballero Alvarado, Armando Javier</span
+          >
+          <span class="advisor-course"
+            >Percepción Computacional · Trujillo – Perú · 2026</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="13"
+                  stroke="#E8903A"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="7"
+                  fill="#E8903A"
+                  fill-opacity="0.18"
+                />
+                <circle cx="14" cy="14" r="3" fill="#E8903A" />
+              </svg>
+            </div>
+            <span class="logo-text">UrbanSense</span>
+          </div>
+          <p class="footer-tagline">Red inteligente de monitoreo urbano</p>
+        </div>
+        <div class="footer-links">
+          <a href="#proyecto">Proyecto</a>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#tecnologias">Tecnologías</a>
+        </div>
+        <div class="footer-copy">
+          <p>© 2026 UrbanSense - Percepción Computacional · Trujillo, Perú</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== TOAST ========== -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
